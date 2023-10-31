@@ -5,6 +5,8 @@ const menu_btn_xmark = document.getElementById('menu-btn-xmark');
 const theme_toggler = document.getElementById('theme-toggler');
 const sun_icon = document.getElementById('sun-icon');
 const moon_icon = document.getElementById('moon-icon');
+const topButton = document.getElementsByClassName("top-button")[0];
+
 if (toggleButton) {
 
     toggleButton.addEventListener('click', function () {
@@ -34,4 +36,24 @@ if (theme_toggler) {
 
         }
     });
+}
+
+if (topButton) {
+    function scrollToTop() {
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth"
+        });
+    }
+    function toggleButtonF() {
+        var scrollPosition = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
+        
+        if (scrollPosition > 100) {
+            topButton.hidden = false;
+        }
+        else {
+            topButton.hidden = true;
+        }
+    }
+    window.addEventListener("scroll", toggleButtonF);
 }
